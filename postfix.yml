@@ -1,0 +1,22 @@
+---
+- hosts: test
+  tasks:
+  - name: install postfix
+    yum: 
+      name: postfix
+      state: installed
+    tags: init postfix
+
+  - name: start postfix
+    service: 
+      name: postfix
+      state: started
+      enabled: yes
+    tags: init postfix
+
+  - name: delete postfix
+    yum:
+      name: postfix
+      state: absent
+    tags: drop postfix
+ 
